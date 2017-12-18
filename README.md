@@ -1,3 +1,5 @@
+![learn monads](https://sep.yimg.com/ay/rnrdist/yosemite-sam-bugs-bunny-limited-edition-1.jpg)
+
 # Frisby-study-guide
 my workbook for the [Professor Frisby's mostly-adequate-guide](https://github.com/MostlyAdequate/mostly-adequate-guide)
 Additionally I am using [ava](https://github.com/avajs/ava) and [ramda](http://ramdajs.com/)
