@@ -27,7 +27,7 @@ const chain = R.curry(function(f, io) {
 //const map = f => io => io.map(f)
 const readFile = function(fileName) {
   return IO.of(function() {
-    return fs.readFileSync(fileName, 'utf-8')
+    return fileName => fs.readFileSync(fileName, 'utf-8')
   })
 }
 
@@ -46,9 +46,7 @@ const catFirstChar = R.compose(R.tap(log), chain(head), cat)
 test('IO monad specifications', t => {
   const file2read = p('./', 'IOSpecs.js')
   console.log(`file2read = ${file2read}`)
-  let computed = cat(file2read)
-  console.log(`computed = ${computed.unsafePerformIO()}`)
-  computed.unsafePerformIO()
 
   t.pass('under construction')
 })
+2

@@ -6,9 +6,8 @@ import test from 'ava'
 import { Maybe } from '../../../src/lib/functors/Maybe'
 import utils from '../../../src/lib/utils'
 
-const add = (x, y) => x + y
-
-const add10 = x => add(10, x)
+const add = x => y => x + y
+const add10 = add(10)
 
 /**
  ** helper functions from "Maybe" chapter
@@ -47,6 +46,7 @@ const arrayOne = R.compose(chain(safeDot('a')), R.tap(log), safeHead)
 test('map over non null Maybe functor', t => {
   t.deepEqual(Maybe.of(14).map(add10), Maybe.of(24))
 })
+
 test('map over null Maybe functor', t => {
   t.deepEqual(Maybe.of(null).map(add10), Maybe.of(null))
 })
@@ -88,4 +88,23 @@ test('safeDot null specifications', t => {
 test('safeDot some specifications', t => {
   console.log(`safedot = ${JSON.stringify(safeDot('a')({ a: 1 }))}`)
   t.deepEqual(safeDot('a')({ a: 1 }), Maybe.of(1))
+})
+test('applicative functor specifications', t => {
+  let computed = Maybe.of(add(2)).ap(Maybe.of(3))
+  t.deepEqual(computed, Maybe.of(5))
+})
+test('applicative functor map specifications', t => {
+  let computationWithMap = Maybe.of(2)
+    .map(add)
+    .ap(Maybe.of(3))
+  let computation = Maybe.of(add(2)).ap(Maybe.of(3))
+  t.deepEqual(computationWithMap, computation)
+})
+test('applicative functor no map specifications', t => {
+  let computationWithMap = Maybe.of(add)
+    .ap(Maybe.of(2))
+    .ap(Maybe.of(3))
+
+  let computation = Maybe.of(add(2)).ap(Maybe.of(3))
+  t.deepEqual(computationWithMap, computation)
 })
