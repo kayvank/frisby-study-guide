@@ -24,3 +24,6 @@ Maybe.prototype.chain = function(f) {
 }
 Maybe.prototype.flatMap = Maybe.chain
 Maybe.prototype.bind = Maybe.chain
+Maybe.prototype.ap = function(other_maybe) {
+  return other_maybe.map(this.__value)
+}
