@@ -1,4 +1,4 @@
-![learn monads](https://sep.yimg.com/ay/rnrdist/yosemite-sam-bugs-bunny-limited-edition-1.jpg)
+![learn monads](./docs/images/must-learn-monads.jpg)
 
 # Frisby-study-guide
 my workbook for the [Professor Frisby's mostly-adequate-guide](https://github.com/MostlyAdequate/mostly-adequate-guide)
