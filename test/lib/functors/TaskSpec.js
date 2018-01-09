@@ -55,8 +55,8 @@ test('string matcher specifications', t => {
   t.pass()
 })
 test('task monad chain specifications', t => {
-  const t2 = new Task((reject, resolve) => resolve(2))
-  const addtask = t => new Task((reject, resolve) => resolve(add10(t)))
+  const t2 = Task.of(5)
+  const addtask = t => Task.of(add10(t))
   unsafeRun(t2.chain(addtask))
   t.pass()
 })

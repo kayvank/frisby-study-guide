@@ -1,6 +1,6 @@
 ![learn monads](./docs/images/must-learn-monads.jpg)
 
-# Frisby-study-guide
+# Professor Frisby's Study Guide
 my workbook for the [Professor Frisby's mostly-adequate-guide](https://github.com/MostlyAdequate/mostly-adequate-guide)
 Additionally I am using [ava](https://github.com/avajs/ava) and [ramda](http://ramdajs.com/)
 ## Getting started

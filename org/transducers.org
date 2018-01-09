@@ -1,0 +1,25 @@
+* Agenda
+** Recursion
+*** catamorphisym
+**** fold
+** Corecursion
+*** Anamorphism
+**** unfold
+** Transducers
+Composable transformation functions
+*** Composable 
+Using map, filter, reduce transformation to compose data thru 
+**** const transformation = compose(map(f), filter(f`), reduce(f``)
+**** Problem 
+**** map, filter & reduce have different signatures.
+**** Solution
+***** use reduce only
+****** map & filter may be implemented using reduce
+** Monoids
+** F-Algebra
+Rewriting the algebraic laws in terms of morphisms. Hence the laws may be glued together in terms of single Functor `F`
+
+* Programs
+** Interpreting programs
+Programs are actual data structures folded down to a value.  This process is called interpreting a program
+ 

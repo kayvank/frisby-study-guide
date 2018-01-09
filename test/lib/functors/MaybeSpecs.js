@@ -108,3 +108,11 @@ test('applicative functor no map specifications', t => {
   let computation = Maybe.of(add(2)).ap(Maybe.of(3))
   t.deepEqual(computationWithMap, computation)
 })
+//
+test.only('commutative property of Functor diagram', t => {
+  const topRoute = R.compose(Maybe.of, R.reverse)
+  const bottomRoute = R.compose(map(R.reverse), Maybe.of)
+  let computed = topRoute('hi there')
+  console.log(`Computed commutative =${JSON.stringify(computed)}`)
+  t.deepEqual(computed, bottomRoute('hi there'))
+})

@@ -9,6 +9,7 @@ import fs from 'fs'
 import p from 'relative-path'
 import Task from 'data.task'
 
+const log = x => console.log(x)
 const addrs = [
   {
     street: { no: '1122', name: 'boogie boogie Ave' },
@@ -23,8 +24,44 @@ const addrs = [
     zip: '6666'
   }
 ]
-const user = { id: 3, name: 'bob', address: addrs }
 
+const user = { id: 3, name: 'bob', address: addrs }
+const warriors = {
+  members: {
+    past: [
+      {
+        id: 1,
+        name: 'Bobak Khoramdeen',
+        address: addrs,
+        legacy: ['steady', 'dedication', 'love']
+      },
+      {
+        id: 2,
+        name: 'Mazyar Qarinvand',
+        address: addrs,
+        legacy: ['leadership', 'resistance', 'solidarity']
+      },
+      {
+        id: 3,
+        name: 'Mohammad Mosddegh',
+        address: addrs,
+        legacy: ['leadership', 'honesty', 'selflessness']
+      }
+    ]
+  }
+}
+test('show how to change the inner array of an array using lens', t => {
+  const pastWarriors = R.lensPath(['members', 'past'])
+  const legacy = R.lensProp('legacy')
+  const computed = R.view(pastWarriors, warriors)
+  const makeArryUpper = R.map(R.toUpper)
+
+  const legacyAsUpper = o =>
+    R.over(pastWarriors, R.map(R.over(legacy, makeArryUpper)), o)
+  console.log(`legacyUpper = ${JSON.stringify(legacyAsUpper(warriors))}`)
+
+  t.pass()
+})
 test('lens view specifications', t => {
   const nameLense = R.lens(R.prop('name'), R.assoc('name'))
   t.truthy(user.name === R.view(nameLense, user))

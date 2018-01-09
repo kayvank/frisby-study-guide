@@ -1,9 +1,11 @@
 {
-  "name": "cs-publish-api",
+  "name": "frisby-study-guide",
   "version": "1.0.0",
   "description": "",
   "main": "./build/index.js",
   "dependencies": {
+    "data.either": "^1.5.1",
+    "data.maybe": "^1.2.2",
     "data.task": "^3.1.1",
     "moment": "^2.19.4",
     "pify": "^3.0.0",

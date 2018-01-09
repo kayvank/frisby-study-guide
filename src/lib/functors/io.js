@@ -16,13 +16,13 @@ IO.of = function(f) {
 }
 
 IO.prototype.map = function(f) {
-  return IO.of(R.compose(f, this.unsafePerformIO))
+  return new IO(R.compose(f, this.unsafePerformIO))
 }
 
 IO.prototype.join = function() {
   const thiz = this
   return new IO(function() {
-    return thiz.unsafePerformIO() //.unsafePerformIO()
+    return thiz.unsafePerformIO().unsafePerformIO()
   })
 }
 IO.prototype.chain = function(f) {
